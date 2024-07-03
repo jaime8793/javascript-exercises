@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shopping list example</title>
+    <style>
+      li {
+        margin-bottom: 10px;
+      }
+
+      li button {
+        font-size: 12px;
+        margin-left: 20px;
+        color: #666;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>My shopping list</h1>
+
+    <div>
+      <label for="item">Enter a new item:</label>
+      <input class="input" type="text" name="item" id="item" />
+      <button onclick="onClickFunction()" class="button">Add item</button>
+    </div>
+
+    <ul class="list"></ul>
+
+    <script>
+      const ulTag = document.querySelector(".list");
+      const inputTag = document.querySelector(".input");
+      const buttonTag = document.querySelector(".button");
+      function onClickFunction() {
+        console.log("clicked");
+        console.log(inputTag.value);
+        const inputedValue = inputTag.value;
+        console.log(inputedValue);
+        inputTag.value = " ";
+        const newListItem = document.createElement("li");
+        newListItem.classList.add("newItem");
+        const newSpan = document.createElement("span");
+        const newButton = document.createElement("button");
+        newButton.addEventListener("click", buttonDelete);
+        ulTag.appendChild(newSpan);
+        ulTag.appendChild(newButton);
+        newButton.textContent = "Delete";
+        newSpan.textContent = inputedValue;
+      }
+      const deleteButton = document.querySelector(".delete");
+
+      deleteButton.addEventListener("click", buttonDelete);
+      function buttonDelete() {
+        console.log("delete");
+        //const newSpanSelected = document.querySelector(".newItem")
+        ulTag.removeChild(ulTag.firstElementChild);
+        //newButton.remove();
+        //document.querySelector(".newItem").remove();
+        //document.querySelector(".delete").remove();
+      }
+      /* const newListItem = document.createElement("li");
+      const newSpan = document.createElement("span");
+      const newButton = document.createElement("button");
+      const newListItem = document.createElement("li");
+      const newSpan = document.createElement("span");
+      const newButton = document.createElement("button");*/
+    </script>
+  </body>
+</html>
